@@ -122,8 +122,7 @@ class ChessEnv(gym.Env):
 
 		# make move
 		self.state, reward, self.done = self.player_move(
-			self.current_player, self.state, action, 
-			render=self.log, render_msg='Player '+str(self.current_player))
+			self.current_player, self.state, action)
 
 		if self.done:
 			return self.state, reward, self.done, {'state': self.state}
@@ -144,8 +143,7 @@ class ChessEnv(gym.Env):
 
 			# make move
 			self.state, opp_reward, self.done = self.player_move(
-				-1, self.state, opp_action, 
-				render=self.log, render_msg='Opponent')
+				-1, self.state, opp_action)
 
 			total_reward = reward - opp_reward
 			self.state['on_move'] += 1
